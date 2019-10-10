@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: cloud-zipkin
+  # 解决zipkin启动the bean 'characterEncodingFilter'，defined in
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 9411
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+management:
+  metrics:
+    web:
+      # 解决zipkin报错IllegalArgumentException: Prometheus requires that all meters
+      server:
+        auto-time-requests: false

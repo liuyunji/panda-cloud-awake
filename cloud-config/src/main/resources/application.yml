@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: cloud-config
+  zipkin:
+    base-url: http://localhost:9411
+  # 获取本地配置文件，SpringCloudConfig本身支持：本地储存、git远程、svn
+  profiles:
+    active: native
+
+  cloud:
+    config:
+      server:
+        #获取本地配置文件的位置
+        native:
+          search-locations: classpath:config/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
